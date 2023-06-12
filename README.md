@@ -36,4 +36,5 @@ Please dont divide by zero. it makes your device really sad
 
 ## Ending Notes
 
-Have a good time and follow the instructions
+Follow the instructions and have a good time.
+
