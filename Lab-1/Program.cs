@@ -117,7 +117,7 @@
         {   
             //divides the value of the GetProduct function with a number of the user choice
             Console.WriteLine($"Please enter a number to divide your product {product} by");
-            int quotient = Convert.ToInt32(Console.ReadLine());
+            decimal quotient = Convert.ToInt32(Console.ReadLine());
             if (quotient == 0)
             {
                 throw new Exception("Cant divide by 0");
