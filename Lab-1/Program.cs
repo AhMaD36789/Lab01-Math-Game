@@ -20,23 +20,12 @@
 
             int[] array = new int[arraySize];
 
-            Populate(array);
-            
-            try
-            {
-                for (int i = 1; i <= arraySize; i++)
-                {
-                    Console.WriteLine($"please enter number {i} : {arraySize}");
-                    array[i - 1] = Convert.ToInt32(Console.ReadLine());
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
+            array = Populate(array);
 
             int sum = GetSum(array);
+
             int product = GetProduct(array, sum);
+
             int quotient = GetQuotient(product);
 
             Console.WriteLine($"Your Array size is : {arraySize}");
@@ -51,17 +40,19 @@
                 Console.Write($"{array[i]},");
             }
             Console.WriteLine($"The sum of the array is {sum}");
-            Console.WriteLine($"{sum} * {1} = {product}");
-            Console.WriteLine($"{product} / {1} = {quotient}");
+            Console.WriteLine($"{sum} * {product/sum} = {product}");
+            Console.WriteLine($"{product} / {product/quotient} = {quotient}");
             Console.WriteLine("Program is complete");
-
-
         }
 
         static int [] Populate(int[] array)
         {
-            
-            return array ;
+            for (int i = 1; i <= array.Length; i++)
+            {
+                Console.WriteLine($"please enter number {i} : {array.Length}");
+                array[i - 1] = Convert.ToInt32(Console.ReadLine());
+            }
+            return array;
         }
 
         static int GetSum(int[] array)
@@ -71,9 +62,7 @@
             {
                 sum+= array[i];
             }
-
             //throw custom exception if the sum is less than 20
-
             return sum;
         }
 
