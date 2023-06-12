@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            //main function includes calls to sub-call and a catch for custom exceptions
             try
             {
                 StartSequence();
@@ -18,6 +19,7 @@
         }
         static void StartSequence ()
         {
+            // calls for (Populate/GetSum/GetProduct/GetQuotient) functions with details about the current run of the program to the user
             try
             {
                 Console.WriteLine("this is my game, my game is amazing!");
@@ -36,7 +38,7 @@
 
                 int product = GetProduct(array, sum);
 
-                int quotient = GetQuotient(product);
+                decimal quotient = GetQuotient(product);
 
                 Console.WriteLine($"Your Array size is : {arraySize}");
                 Console.Write("The numbers in the array are ");
@@ -69,6 +71,7 @@
         }
 
         static int [] Populate(int[] array)
+            //fills array with custom input
         {
             for (int i = 1; i <= array.Length; i++)
             {
@@ -80,6 +83,7 @@
 
         static int GetSum(int[] array)
         {
+            //gets the sum of the array of numbers that the user entered
             int sum = 0;
             for (int i = 0; i<array.Length; i++)
             {
@@ -96,26 +100,29 @@
 
         static int GetProduct(int[] array, int sum)
         {
+            //multiplies the element that the user selected with the sum of the array
             Console.WriteLine($"select a random number from 1 to {array.Length}");
-            int product = array[Convert.ToInt32(Console.ReadLine())-1];
+            int product = Convert.ToInt32(Console.ReadLine());
             if (product < 1 || product>array.Length)
             {
                 throw new Exception("out of array range");
             }
+            product = array[product - 1];
             product *= sum;
             
             return product;
         }
 
-        static int GetQuotient(int product)
+        static decimal GetQuotient(int product)
         {   
+            //divides the value of the GetProduct function with a number of the user choice
             Console.WriteLine($"Please enter a number to divide your product {product} by");
             int quotient = Convert.ToInt32(Console.ReadLine());
             if (quotient == 0)
             {
                 throw new Exception("Cant divide by 0");
             }
-            return product/=quotient;
+            return decimal.Divide(product,quotient);
         }
 
     }
