@@ -36,7 +36,7 @@
 
                 int product = GetProduct(array, sum);
 
-                int quotient = GetQuotient(product);
+                decimal quotient = GetQuotient(product);
 
                 Console.WriteLine($"Your Array size is : {arraySize}");
                 Console.Write("The numbers in the array are ");
@@ -97,25 +97,26 @@
         static int GetProduct(int[] array, int sum)
         {
             Console.WriteLine($"select a random number from 1 to {array.Length}");
-            int product = array[Convert.ToInt32(Console.ReadLine())-1];
-            if (product < 1 || product>array.Length)
+            int product = Convert.ToInt32(Console.ReadLine());
+            if (product < 1 || product > array.Length)
             {
                 throw new Exception("out of array range");
             }
+            product = array[product-1];
             product *= sum;
             
             return product;
         }
 
-        static int GetQuotient(int product)
+        static decimal GetQuotient(decimal product)
         {   
             Console.WriteLine($"Please enter a number to divide your product {product} by");
-            int quotient = Convert.ToInt32(Console.ReadLine());
+            decimal quotient = Convert.ToInt32(Console.ReadLine());
             if (quotient == 0)
             {
                 throw new Exception("Cant divide by 0");
             }
-            return product/=quotient;
+            return decimal.Divide(product,quotient);
         }
 
     }
